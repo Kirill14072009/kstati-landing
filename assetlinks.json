@@ -4,7 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.example.kstati_app_clean",
-      "sha256_cert_fingerprints": ["00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"]
+      "sha256_cert_fingerprints": ["01:7C:BF:70:B3:C9:54:D7:6E:CB:15:A5:26:FD:51:19:60:EE:A5:95:C4:84:91:E2:71:55:14:EE:4F:49:44:32"]
     }
   }
 ]
