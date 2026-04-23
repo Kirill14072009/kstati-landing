@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kstati</title>
     <script>
         // Получаем ID из хэша
-        var placeId = window.location.hash.replace('#place=', '');
+        var hash = window.location.hash;
+        var placeId = '';
+        
+        if (hash && hash.includes('place=')) {
+            placeId = hash.replace('#place=', '');
+        }
         
         if (placeId) {
-            // Пробуем открыть через свою схему
+            // 🔥 СРАЗУ редирект на схему приложения
             window.location.href = 'kstati://place/' + placeId;
             
-            // Если не открылось — показываем страницу через 1 секунду
+            // Если через 2 секунды всё ещё на этой странице — показываем заглушку
             setTimeout(function() {
-                document.getElementById('content').style.display = 'block';
-            }, 1000);
+                document.getElementById('fallback').style.display = 'block';
+            }, 2000);
         } else {
-            document.getElementById('content').style.display = 'block';
+            document.getElementById('fallback').style.display = 'block';
         }
     </script>
     <style>
@@ -53,12 +58,19 @@
     </style>
 </head>
 <body>
-    <div class="card" id="content">
+    <div class="card" id="fallback">
         <div style="font-size:64px">📍</div>
         <h1>Kstati</h1>
         <p>Туристический гид</p>
-        <p>Установите приложение:</p>
+        <p>Установите приложение, чтобы увидеть место на карте:</p>
         <a href="#" class="btn">📲 Скачать для Android</a>
     </div>
+    
+    <script>
+        // Дополнительная попытка редиректа
+        if (placeId && !window.location.href.startsWith('kstati://')) {
+            window.location.replace('kstati://place/' + placeId);
+        }
+    </script>
 </body>
 </html>
