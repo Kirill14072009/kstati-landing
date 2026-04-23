@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kstati</title>
+</head>
+<body>
+    <h1>Kstati</h1>
+    <p>Место ID: <span id="id"></span></p>
+    <script>
+        document.getElementById('id').textContent = window.location.pathname.split('/').pop();
+    </script>
+</body>
+</html>
